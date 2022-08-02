@@ -15,4 +15,15 @@ public class Book extends Product{
     public void setAuthor(String author) {
         this.author = author;
     }
+
+    public boolean matches(String search) {
+        if (super.matches(search)) { // вызов метода matches в версии описанной в Product
+            return true;
+        }
+        if (getAuthor().matches(search)) {
+            return true;
+        }
+        return false;
+    }
 }
+

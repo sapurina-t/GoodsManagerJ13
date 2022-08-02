@@ -14,7 +14,7 @@ public class ProductManagerTests {
 
     Product product101 = new Book(101, "1", 100, "author1");
     Product product102 = new Book(102, "2", 200, "author2");
-    Product product103 = new Book(103, "3", 300, "author3");
+    Product product103 = new Book(103, "3", 300, "manufacturer1");
     Product product104 = new Book(104, "4", 400, "author3");
 
     Product product201 = new Smartphone(201, "4", 100, "manufacturer1");
@@ -35,6 +35,35 @@ public class ProductManagerTests {
         manager.add(product204);
     }
     //мы проверяем вхождение запроса в текст названия товара
+
+    @Test
+    public void shouldSearchBookByAuthor() {
+
+        Product[] expected = {product101};
+        Product[] actual = manager.searchBy("author1");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSearchSmartphoneByManufacturer() {
+
+        Product[] expected = {product203, product204};
+        Product[] actual = manager.searchBy("manufacturer3");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSearchSmartphoneAndBookMatchInTheName() {
+
+        Product[] expected = {product103, product201};
+        Product[] actual = manager.searchBy("manufacturer1");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+
     @Test
     public void shouldSearchBookByTitle() {
 

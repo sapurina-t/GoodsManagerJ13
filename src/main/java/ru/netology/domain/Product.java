@@ -34,4 +34,12 @@ public class Product {
     public void setCost(int cost) {
         this.cost = cost;
     }
+
+    public boolean matches(String search) {
+        if (getTitle().contains(search)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
